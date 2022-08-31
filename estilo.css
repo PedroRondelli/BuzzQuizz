@@ -18,6 +18,7 @@ body{
     position: fixed;
     top:0;
     left:0;
+    z-index: 5;
 
     display: flex;
     justify-content: center;
@@ -71,16 +72,22 @@ body{
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* align-items: center; */
+
+    
     
 }
 .quizzesServidor h1{
     font-size: 20px ;
     font-weight: 700;
     margin-bottom: 12px;
+    /* background-color: aquamarine; */
+    /* text-align: ; */
+
 
 }
 .listaDeQuizzes{
+    /* background-color: #EC362D; */
     display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -90,6 +97,47 @@ body{
     width: 353px;
     height: 181px;
     border-radius: 5px;
-    background-color: aqua;
     margin-bottom: 10px; 
+    position: relative;
+    
+    
+}
+.visualizacaoQuizz img{
+    width: 353px;
+    height: 181px;
+    border-radius: 5px;
+    /* -webkit-mask-image: linear-gradient(to top, transparent 10%, black 100%); */
+    
+}
+.tituloQuizzPedro{
+    background-color: transparent;
+    position:absolute;
+    bottom: 7px;
+    left: 18px;
+    z-index: 4;
+    width: 300px;
+    font-size: 19px;
+    font-weight: 400;
+    color: white;
+    overflow-wrap: break-word;
+}
+.degrade{
+    width: 353px;
+    height: 181px;
+    border-radius: 5px;
+    position:absolute;
+    top: 0;
+    left:0;
+    z-index: 3;
+    background: rgb(244,242,242);
+    background: linear-gradient(180deg, rgba(244,242,242,0.2497373949579832) 0%, rgba(0,0,0,0.9808298319327731) 90%);
+}
+@media(max-width: 1100px){
+    .listaDeQuizzes{
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        /* justify-content: space-between; */
+        
+    }
 }
