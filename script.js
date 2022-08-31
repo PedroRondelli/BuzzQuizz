@@ -1,12 +1,12 @@
 console.log("Estou aquui")
-requisicaoteste()
+requisicaoQuizzes()
 
 function printar(resposta) {
-    console.log(resposta)
+    console.log(resposta.data)
 }
 
-function requisicaoteste() {
+function requisicaoQuizzes() {
     let promessaTeste = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes")
     promessaTeste.then(printar)
-    promessaTeste.catch(requisicaoteste)
+    promessaTeste.catch(requisicaoQuizzes)
 }

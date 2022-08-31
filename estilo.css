@@ -7,6 +7,9 @@ body{
 .container{
     /* background-color: blue; */
     margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    
 }
 .barrasuperior{
     background-color: #ec362d;
@@ -32,7 +35,7 @@ body{
     border: 1px dashed #D5D5D5;
     border-radius: 5px;
     width: 80%;
-    margin:0 auto;
+    margin:80px auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,5 +66,30 @@ body{
     
 }
 .quizzesServidor{
-    background-color: darkmagenta;
+    /* background-color: darkmagenta; */
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+.quizzesServidor h1{
+    font-size: 20px ;
+    font-weight: 700;
+    margin-bottom: 12px;
+
+}
+.listaDeQuizzes{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* overflow-y: scroll; */
+}
+.visualizacaoQuizz{
+    width: 353px;
+    height: 181px;
+    border-radius: 5px;
+    background-color: aqua;
+    margin-bottom: 10px; 
 }
