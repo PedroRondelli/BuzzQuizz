@@ -24,3 +24,7 @@ function mudartela2() {
     console.log("Clicou")
     
 }
+
+function abrirTelaCriarPerguntas(){
+    alert("teste");
+}

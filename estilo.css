@@ -132,6 +132,62 @@ body{
     background: rgb(244,242,242);
     background: linear-gradient(180deg, rgba(244,242,242,0.2497373949579832) 0%, rgba(0,0,0,0.9808298319327731) 90%);
 }
+
+.titulo-tela3{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    margin-top: 71px;
+    margin-bottom: 39px;
+}
+.perguntas-tela3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.caixaInput{
+    width: 564px;
+    height: 46px;
+    display: flex;
+    margin-top: 9px;
+    padding-left: 23px;
+}
+
+::placeholder{
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    color: #BABABA;
+}
+.centralizar-botao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.botao-tela3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    color: #FFF5F4;
+    width: 368px;
+    height: 54px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    border-style: none;
+    margin-top: 109px;
+}
+
 @media(max-width: 1100px){
     .listaDeQuizzes{
         flex-direction: column;
@@ -141,3 +197,4 @@ body{
         
     }
 }
+
