@@ -1,4 +1,4 @@
-/* console.log("Estou aquui")
+console.log("Estou aquui")
 requisicaoQuizzes()
 
 function rendenizaQuizzes(resposta) {
@@ -24,18 +24,18 @@ function mudartela2() {
     console.log("Clicou")
     
 }
- */
 
-function verificarURL(texto){
+
+function verificarURL(texto) {
     try {
         let url = new URL(texto);
-        return(true);
-    } catch(err) {
-        return(false);
+        return (true);
+    } catch (err) {
+        return (false);
     }
 }
 
-function abrirTelaCriarPerguntas(){
+function abrirTelaCriarPerguntas() {
     const titquizz = document.querySelector(".titulo-quizz").value;
     const urlimagem = document.querySelector(".url-imagem").value;
     const quantperg = Number(document.querySelector(".quant-perguntas").value);
@@ -46,7 +46,7 @@ function abrirTelaCriarPerguntas(){
     const cond3 = (quantperg >= 3);
     const cond4 = (quantniveis >= 2);
 
-    if(cond1 && cond2 && cond3 && cond4){
+    if (cond1 && cond2 && cond3 && cond4) {
         //trocar de tela e acionar a função de renderizar a tela de criar perguntas
         alert("pode proseguir");
     } else {

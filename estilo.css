@@ -1,23 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
 
-body{
-    font-family: 'Roboto', sans-serif;
-    background-color: #fafafa;
+* {
+    box-sizing: border-box;
 }
-.container{
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e5e5e5;
+}
+
+.escondido {
+    display: none;
+}
+
+.container {
     /* background-color: blue; */
     margin-top: 64px;
     display: flex;
     flex-direction: column;
-    
 }
-.barrasuperior{
+
+.barrasuperior {
     background-color: #ec362d;
     width: 100vw;
     height: 64px;
     position: fixed;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     z-index: 5;
 
     display: flex;
@@ -30,31 +39,33 @@ body{
 
     box-shadow: 0px 0px 10px 0px #111111;
 }
-.quizzesUsuario{
+
+.quizzesUsuario {
     /* background-color: chocolate; */
     height: 181px;
     border: 1px dashed #D5D5D5;
     border-radius: 5px;
     width: 80%;
-    margin:80px auto;
+    margin: 80px auto;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-.caixaBotaoCriar{
+
+.caixaBotaoCriar {
     /* background-color: burlywood; */
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-evenly;
 }
+
 .caixaBotaoCriar p {
     color: #b9b9b9;
     text-align: center;
-
 }
-.caixaBotaoCriar button{
+
+.caixaBotaoCriar button {
     border: 1px dashed #EC362D;
     color: #EC362D;
     background-color: transparent;
@@ -64,54 +75,53 @@ body{
     padding: 10px;
     box-sizing: border-box;
     margin: 0 auto;
-    
 }
-.quizzesServidor{
+
+.quizzesServidor {
     /* background-color: darkmagenta; */
     width: 80%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     /* align-items: center; */
-
-    
-    
 }
-.quizzesServidor h1{
-    font-size: 20px ;
+
+.quizzesServidor h1 {
+    font-size: 20px;
     font-weight: 700;
     margin-bottom: 12px;
     /* background-color: aquamarine; */
     /* text-align: ; */
 
-
 }
-.listaDeQuizzes{
+
+.listaDeQuizzes {
     /* background-color: #EC362D; */
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     /* overflow-y: scroll; */
 }
-.visualizacaoQuizz{
+
+.visualizacaoQuizz {
     width: 353px;
     height: 181px;
     border-radius: 5px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     position: relative;
-    
-    
 }
-.visualizacaoQuizz img{
+
+.visualizacaoQuizz img {
     width: 353px;
     height: 181px;
     border-radius: 5px;
     /* -webkit-mask-image: linear-gradient(to top, transparent 10%, black 100%); */
-    
+
 }
-.tituloQuizzPedro{
+
+.tituloQuizzPedro {
     background-color: transparent;
-    position:absolute;
+    position: absolute;
     bottom: 7px;
     left: 18px;
     z-index: 4;
@@ -121,21 +131,96 @@ body{
     color: white;
     overflow-wrap: break-word;
 }
-.degrade{
+
+.degrade {
     width: 353px;
     height: 181px;
     border-radius: 5px;
-    position:absolute;
+    position: absolute;
     top: 0;
-    left:0;
+    left: 0;
     z-index: 3;
-    background: rgb(244,242,242);
-    background: linear-gradient(180deg, rgba(244,242,242,0.2497373949579832) 0%, rgba(0,0,0,0.9808298319327731) 90%);
+    background: rgb(244, 242, 242);
+    background: linear-gradient(180deg, rgba(244, 242, 242, 0.2497373949579832) 0%, rgba(0, 0, 0, 0.9808298319327731) 90%);
 }
+
+/* INICIO DA TELA 2 */
+
+.imagemQuizz-tela2 {
+    width: 100%;
+    height: 227px;
+    background-color: #000000;
+    color: #ffffff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* container das perguntas */
+.listaDePerguntas {
+    background-color: blue;
+    width: 100%;
+    height: 900px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* caixa de perguntas - alterar tamanho em px para mobile */
+.perguntaQuizz {
+    background-color: #ffffff;
+    width: 760px;
+    height: 676px;
+    margin-top: 40px;
+
+    padding: 20px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulopergunta-tela2 {
+    background-color: #A0438D;
+    width: 90%;
+    height: 20%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resposta {
+    width: 40%;
+    height: 30%;
+    background-color: #EC362D;
+    margin: 20px 35px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.resposta>img {
+    width: 100%;
+    height: 80%;
+    background-color: yellow;
+}
+
+.resposta>p {
+    width: 100%;
+    height: 15%;
+    background-color: green;
+}
+
+
+/* FIM DA TELA 2 */
 
 /*AQUI INICIA OS ESTILOS DA TELA 3*/
 
-.titulo-tela3{
+.titulo-tela3 {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 20px;
@@ -146,13 +231,14 @@ body{
     margin-top: 71px;
     margin-bottom: 39px;
 }
-.perguntas-tela3{
+
+.perguntas-tela3 {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.caixaInput{
+.caixaInput {
     width: 88vw;
     max-width: 564px;
     height: 46px;
@@ -161,7 +247,7 @@ body{
     padding-left: 23px;
 }
 
-::placeholder{
+::placeholder {
     font-family: 'Roboto', sans-serif;
     font-style: italic;
     font-weight: 400;
@@ -169,12 +255,14 @@ body{
     line-height: 22px;
     color: #BABABA;
 }
-.centralizar-botao{
+
+.centralizar-botao {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.botao-tela3{
+
+.botao-tela3 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -194,13 +282,12 @@ body{
 
 /*AQUI TERMINA OS ESTILOS DA TELA 3*/
 
-@media(max-width: 1100px){
-    .listaDeQuizzes{
+@media(max-width: 1100px) {
+    .listaDeQuizzes {
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
         /* justify-content: space-between; */
-        
+
     }
 }
-
