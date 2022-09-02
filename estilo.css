@@ -151,12 +151,39 @@ body {
     height: 18vh;
     min-height: 142px;
     background-color: #000000;
+
+    position: relative;
+    z-index: 0;
+
+}
+
+.imagemQuizz-tela2>img {
+    width: 100vw;
+    height: 18vh;
+    min-height: 142px;
+
+    position: absolute;
+    z-index: 1;
+}
+
+.tituloQuizz-tela2 {
+    width: 100vw;
+    height: 18vh;
+    min-height: 142px;
     color: #ffffff;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    position: absolute;
+    z-index: 2;
 }
+
+/* .tituloQuizz-tela2>h1 {
+    position: absolute;
+    z-index: 2;
+} */
 
 /* container das perguntas */
 .listaDePerguntas {
@@ -191,7 +218,7 @@ body {
     background-color: #A0438D;
     width: 90%;
     height: 20%;
-    margin-bottom:2%;
+    margin-bottom: 2%;
 
     display: flex;
     justify-content: center;

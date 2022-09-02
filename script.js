@@ -4,8 +4,7 @@ requisicaoQuizzes()
 function rendenizaQuizzes(resposta) {
     console.log(resposta.data)
     resposta.data.forEach(element => {
-        // if(element.image!=="https://http.cat/411.jpg"){
-        let templateDivQuizz = `<div onclick="mudartela2(this);" class="visualizacaoQuizz"><div class="degrade"></div><img src="${element.image}"/><h2 class="tituloQuizzPedro">${element.title}</h2></div>`
+        let templateDivQuizz = `<div onclick="mudartela2(${element.id});" class="visualizacaoQuizz"><div class="degrade"></div><img src="${element.image}"/><h2 class="tituloQuizzPedro">${element.title}</h2></div>`
         let listaDeQuizzes = document.querySelector(".listaDeQuizzes")
         listaDeQuizzes.innerHTML = listaDeQuizzes.innerHTML + templateDivQuizz
         // }
@@ -35,10 +34,13 @@ function mudartela2(quizz) {
     console.log("hola");
     tela2.classList.add("container");
 
+    let idQuizzClicado = JSON.stringify(quizz);
 
+    console.log(idQuizzClicado);
 
-    console.log(quizz.id);
-
+    let promessaTeste = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizzClicado}`)
+    promessaTeste.then(renderizaQuizz)
+    promessaTeste.catch(mudartela2)
     /*
     PEGAR:
     TÍTULO
@@ -48,29 +50,66 @@ function mudartela2(quizz) {
     DENTRO DE QUESTOES
     TÍTULO DA PERGUNTA
     COR
+    RESPOSTAS
+
+    DENTRO DAS RESPOSTAS
+    IMAGEM
+    RESPOSTA CERTA
+    RESPOSTAS ERRADAS
     
     */
 }
 
-function requisicaoQuizzes() {
-    let promessaTeste = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/1")
-    promessaTeste.then(renderizaQuizz)
-    promessaTeste.catch(requisicaoQuizzes)
-}
 
-function renderizaQuizz() {
-    let promessaTeste = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes")
-    promessaTeste.then(rendenizaQuizzes)
-    promessaTeste.catch(requisicaoQuizzes)
+// function requisicaoQuizz() {
+//     let promessaTeste = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/1")
+//     promessaTeste.then(renderizaQuizz)
+//     promessaTeste.catch(requisicaoQuizz)
+// }
 
+function renderizaQuizz(resposta) {
+    console.log("to clicando aqui");
+    let quizzEscolhido = resposta.data;
+    // ${quizzEscolhido[0].image} ${quizzEscolhido[0].title}
+    console.log(quizzEscolhido);
+    const imagemQuizzTela2 = document.querySelector(".imagemQuizz-tela2");
+    imagemQuizzTela2.innerHTML += `
+    <img src="" alt="">
+    <div class="tituloQuizz-tela2">
+        <h1></h1>
+    </div>
+    `;
 
-`<div class="imagemQuizz-tela2">
-<div class="tituloQuizz-tela2">
-    <h1>Título do meu quizz</h1>
-</div>
-</div>
-`
-    
+    const listaDePerguntas = document.querySelector(".listaDePerguntas");
+    listaDePerguntas.innerHTML += `
+            <div class="perguntaQuizz">
+                <div class="titulopergunta-tela2">
+                    <h1>quem nasceu em Roma????</h1>
+                </div>
+                <div class="respostas">
+                    <div class="resposta">
+                        <img src="" alt="">
+                        <p>resposta</p>
+                    </div>
+                    <div class="resposta">
+                        <img src="" alt="">
+                        <p>resposta</p>
+                    </div>
+                    <div class="resposta">
+                        <img src="" alt="">
+                        <p>resposta</p>
+                    </div>
+                    <div class="resposta">
+                        <img src="" alt="">
+                        <p>resposta</p>
+                    </div>
+                </div>
+            </div>
+    <button class="reiniciarQuizz">Reiniciar Quizz</button>
+
+    <div class="voltarHome"><p>Voltar pra Home</p></div>
+`;
+
 }
 
 function verificarURL(texto) {
@@ -100,4 +139,20 @@ function abrirTelaCriarPerguntas() {
         alert("Por favor, verifique se as informações estão preenchidas corretamente");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
