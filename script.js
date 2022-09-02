@@ -5,9 +5,9 @@ function rendenizaQuizzes(resposta) {
     console.log(resposta.data)
     resposta.data.forEach(element => {
         // if(element.image!=="https://http.cat/411.jpg"){
-            let templateDivQuizz = `<div onclick="mudartela2();" class="visualizacaoQuizz"><div class="degrade"></div><img src="${element.image}"/><h2 class="tituloQuizzPedro">${element.title}</h2></div>`
-            let listaDeQuizzes = document.querySelector(".listaDeQuizzes")
-            listaDeQuizzes.innerHTML = listaDeQuizzes.innerHTML + templateDivQuizz
+        let templateDivQuizz = `<div onclick="mudartela2(this);" class="visualizacaoQuizz"><div class="degrade"></div><img src="${element.image}"/><h2 class="tituloQuizzPedro">${element.title}</h2></div>`
+        let listaDeQuizzes = document.querySelector(".listaDeQuizzes")
+        listaDeQuizzes.innerHTML = listaDeQuizzes.innerHTML + templateDivQuizz
         // }
     });
     // let templateDivQuizz = `<div style=" background-image: url(${resposta.data[0].image});" class="visualizacaoQuizz"></div>`
@@ -20,11 +20,58 @@ function requisicaoQuizzes() {
     promessaTeste.then(rendenizaQuizzes)
     promessaTeste.catch(requisicaoQuizzes)
 }
-function mudartela2() {
+
+function mudartela2(quizz) {
     console.log("Clicou")
+
+    let tela1 = document.querySelector(".tela1");
+    let tela2 = document.querySelector(".tela2");
+
+    tela1.classList.remove("container");
+    console.log("hello");
+    tela1.classList.add("escondido");
+    console.log("ola");
+    tela2.classList.remove("escondido");
+    console.log("hola");
+    tela2.classList.add("container");
+
+
+
+    console.log(quizz.id);
+
+    /*
+    PEGAR:
+    TÍTULO
+    IMAGEM
+    QUESTOES
     
+    DENTRO DE QUESTOES
+    TÍTULO DA PERGUNTA
+    COR
+    
+    */
 }
 
+function requisicaoQuizzes() {
+    let promessaTeste = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/1")
+    promessaTeste.then(renderizaQuizz)
+    promessaTeste.catch(requisicaoQuizzes)
+}
+
+function renderizaQuizz() {
+    let promessaTeste = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes")
+    promessaTeste.then(rendenizaQuizzes)
+    promessaTeste.catch(requisicaoQuizzes)
+
+
+`<div class="imagemQuizz-tela2">
+<div class="tituloQuizz-tela2">
+    <h1>Título do meu quizz</h1>
+</div>
+</div>
+`
+    
+}
 
 function verificarURL(texto) {
     try {

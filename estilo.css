@@ -147,8 +147,9 @@ body {
 /* INICIO DA TELA 2 */
 
 .imagemQuizz-tela2 {
-    width: 100%;
-    height: 227px;
+    width: 100vw;
+    height: 18vh;
+    min-height: 142px;
     background-color: #000000;
     color: #ffffff;
 
@@ -159,9 +160,10 @@ body {
 
 /* container das perguntas */
 .listaDePerguntas {
-    background-color: blue;
+    background-color: #e5e5e5;
     width: 100%;
-    height: 900px;
+    height: auto;
+    padding-bottom: 80px;
 
     display: flex;
     flex-direction: column;
@@ -171,14 +173,17 @@ body {
 /* caixa de perguntas - alterar tamanho em px para mobile */
 .perguntaQuizz {
     background-color: #ffffff;
-    width: 760px;
+    width: 100vw;
+    max-width: 759px;
     height: 676px;
+    max-height: 676px;
     margin-top: 40px;
 
-    padding: 20px 0px;
+    padding-top: 2%;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: space-between; */
     align-items: center;
 }
 
@@ -186,17 +191,29 @@ body {
     background-color: #A0438D;
     width: 90%;
     height: 20%;
+    margin-bottom:2%;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.respostas {
+    width: 90%;
+    height: 75%;
+    background-color: orange;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* align-items: flex-start; */
+}
+
 .resposta {
-    width: 40%;
-    height: 30%;
-    background-color: #EC362D;
-    margin: 20px 35px;
+    width: 45%;
+    height: 50%;
+    /* background-color: #EC362D; */
 
     display: flex;
     flex-direction: column;
@@ -205,16 +222,50 @@ body {
 
 .resposta>img {
     width: 100%;
-    height: 80%;
-    background-color: yellow;
+    height: 75%;
+    /* background-color: yellow; */
 }
 
 .resposta>p {
     width: 100%;
-    height: 15%;
-    background-color: green;
+    height: 20%;
+    /* background-color: green; */
 }
 
+.reiniciarQuizz {
+    width: 240px;
+    height: 50px;
+    margin-top: 50px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    border: none;
+
+    color: #fff5f4;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+
+}
+
+.voltarHome {
+    width: 240px;
+    height: 50px;
+    background-color: #e5e5e5;
+    border-radius: 15px;
+    border: none;
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.voltarHome>p {
+    color: #818181;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+}
 
 /* FIM DA TELA 2 */
 
@@ -280,6 +331,7 @@ body {
     margin-top: 109px;
 }
 
+
 /*AQUI TERMINA OS ESTILOS DA TELA 3*/
 
 @media(max-width: 1100px) {
@@ -289,5 +341,11 @@ body {
         align-items: center;
         /* justify-content: space-between; */
 
+    }
+
+
+    .perguntaQuizz {
+        width: 100vw;
+        height: 52vh;
     }
 }
