@@ -40,32 +40,10 @@ function mudartela2(quizz) {
 
     let promessaTeste = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizzClicado}`)
     promessaTeste.then(renderizaQuizz)
-    promessaTeste.catch(mudartela2)
-    /*
-    PEGAR:
-    TÍTULO
-    IMAGEM
-    QUESTOES
-    
-    DENTRO DE QUESTOES
-    TÍTULO DA PERGUNTA
-    COR
-    RESPOSTAS
+    // promessaTeste.catch(mudartela2)
 
-    DENTRO DAS RESPOSTAS
-    IMAGEM
-    RESPOSTA CERTA
-    RESPOSTAS ERRADAS
-    
-    */
+    console.log(promessaTeste);
 }
-
-
-// function requisicaoQuizz() {
-//     let promessaTeste = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/1")
-//     promessaTeste.then(renderizaQuizz)
-//     promessaTeste.catch(requisicaoQuizz)
-// }
 
 function renderizaQuizz(resposta) {
     console.log("to clicando aqui");
@@ -74,9 +52,9 @@ function renderizaQuizz(resposta) {
     console.log(quizzEscolhido);
     const imagemQuizzTela2 = document.querySelector(".imagemQuizz-tela2");
     imagemQuizzTela2.innerHTML += `
-    <img src="" alt="">
+    <img src="${quizzEscolhido.image}" alt="">
     <div class="tituloQuizz-tela2">
-        <h1></h1>
+        <h1>${quizzEscolhido.title}</h1>
     </div>
     `;
 
@@ -84,24 +62,24 @@ function renderizaQuizz(resposta) {
     listaDePerguntas.innerHTML += `
             <div class="perguntaQuizz">
                 <div class="titulopergunta-tela2">
-                    <h1>quem nasceu em Roma????</h1>
+                    <h1>${quizzEscolhido.questions[0].title}</h1>
                 </div>
                 <div class="respostas">
                     <div class="resposta">
-                        <img src="" alt="">
-                        <p>resposta</p>
+                        <img src="${quizzEscolhido.questions[0].answers[0].image}" alt="">
+                        <p>${quizzEscolhido.questions[0].answers[0].text}</p>
                     </div>
                     <div class="resposta">
-                        <img src="" alt="">
-                        <p>resposta</p>
+                        <img src="${quizzEscolhido.questions[0].answers[1].image}" alt="">
+                        <p>${quizzEscolhido.questions[0].answers[1].text}</p>
                     </div>
                     <div class="resposta">
-                        <img src="" alt="">
-                        <p>resposta</p>
+                        <img src="${quizzEscolhido.questions[0].answers[2].image}" alt="">
+                        <p>${quizzEscolhido.questions[0].answers[2].text}</p>
                     </div>
                     <div class="resposta">
-                        <img src="" alt="">
-                        <p>resposta</p>
+                        <img src="${quizzEscolhido.questions[0].answers[2].image}" alt="">
+                        <p>${quizzEscolhido.questions[0].answers[2].text}</p>
                     </div>
                 </div>
             </div>
@@ -110,7 +88,12 @@ function renderizaQuizz(resposta) {
     <div class="voltarHome"><p>Voltar pra Home</p></div>
 `;
 
+
 }
+//fazer função pra randomizar as perguntas
+// function comparador() {
+//     return Math.random() - 0.5;
+// }
 
 function verificarURL(texto) {
     try {

@@ -11,6 +11,7 @@ body {
 
 .escondido {
     display: none;
+    /* !important */
 }
 
 .container {
@@ -161,7 +162,7 @@ body {
     width: 100vw;
     height: 18vh;
     min-height: 142px;
-
+    opacity: 0.6;
     position: absolute;
     z-index: 1;
 }
@@ -179,11 +180,6 @@ body {
     position: absolute;
     z-index: 2;
 }
-
-/* .tituloQuizz-tela2>h1 {
-    position: absolute;
-    z-index: 2;
-} */
 
 /* container das perguntas */
 .listaDePerguntas {
@@ -228,7 +224,7 @@ body {
 .respostas {
     width: 90%;
     height: 75%;
-    background-color: orange;
+    /* background-color: orange; */
 
     display: flex;
     flex-direction: row;
