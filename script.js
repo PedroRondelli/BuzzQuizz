@@ -1,3 +1,8 @@
+//Variáveis globais
+let quantniveis;
+let quantperg;
+
+
 /* console.log("Estou aquui")
 requisicaoQuizzes()
 
@@ -38,8 +43,8 @@ function verificarURL(texto){
 function abrirTelaCriarPerguntas(){
     const titquizz = document.querySelector(".titulo-quizz").value;
     const urlimagem = document.querySelector(".url-imagem").value;
-    const quantperg = Number(document.querySelector(".quant-perguntas").value);
-    const quantniveis = Number(document.querySelector(".quant-niveis").value);
+    quantperg = Number(document.querySelector(".quant-perguntas").value);
+    quantniveis = Number(document.querySelector(".quant-niveis").value);
 
     const cond1 = (titquizz.length >= 20 && titquizz.length <= 65);
     const cond2 = verificarURL(urlimagem);
@@ -54,3 +59,93 @@ function abrirTelaCriarPerguntas(){
     }
 }
 
+function abrirInputsNivel(nivel){
+    let paiNivel = nivel.parentNode;
+    paiNivel.querySelector(".inputs-lista-nivel").classList.toggle("oculto");
+    paiNivel.querySelector(".div-nivel").classList.toggle("oculto");
+}
+
+function ocultarInputsNivel(nivel){
+    let paiNivel = nivel.parentNode;
+    let avoNivel = paiNivel.parentNode;
+    paiNivel.classList.toggle("oculto");
+    avoNivel.querySelector(".div-nivel").classList.toggle("oculto");
+}
+
+function constHtmlNivel(i){
+    let templateNivel = 
+    `<li class="item-lista-nivel crianivel${i}">
+        <div class="div-nivel" onclick="abrirInputsNivel(this)">
+            <p>Nivel ${i}</p>
+            <img src="./editar.svg" alt="Editar nível" onclick="abrirInputsNivel()">  
+        </div>
+        <div class="inputs-lista-nivel inputs${i} oculto">
+            <div class="div-titulo-aberto" onclick="ocultarInputsNivel(this)">Nivel ${i}</div>
+            <input type="text" class="caixaInput titulo-nivel" placeholder="Título do nível">
+            <input type="text" class="caixaInput porcent-acerto-min" placeholder="% de acerto mínima">
+            <input type="text" class="caixaInput url-imagem-nivel" placeholder="URL da imagem do nível">
+            <input type="text" class="caixaInput descricao-nivel" placeholder="Descrição do nível">
+        </div>
+    </li>`;
+    return(templateNivel);
+}
+
+function renderizarListaNiveis(){
+    const ul = document.querySelector(".ul-lista-niveis");
+    for(let i = 1; i<=quantniveis; i++){
+        let nivel = constHtmlNivel(i);
+        ul.innerHTML = ul.innerHTML + nivel;
+    }
+}
+
+//essa função vai verificar os critérios de todos os níveis gerados na tela
+    //se bem sucedida, ela vai avançar para a tela de sucesso do quizz - 3.4
+    //caso não, pedirá para a pessoa verificar as informações
+
+function finalizarCriacaoNiveis(){
+    const arrayValid = [];
+    let valid = true;
+
+    for(let i=1; i<=quantniveis; i++){
+        const niveli = document.querySelector(`.crianivel${i}`);
+        let cond;
+
+        const titulonivel = niveli.querySelector(".titulo-nivel").value;
+        const porcentacertmin = niveli.querySelector(".porcent-acerto-min").value;
+        const urlimagem = niveli.querySelector(".url-imagem-nivel").value;
+        const descnivel = niveli.querySelector(".descricao-nivel").value;
+
+        const cond1 = (titulonivel.length >= 10);
+        const cond2 = (porcentacertmin > 0 && porcentacertmin <100);
+        const cond3 = (verificarURL(urlimagem));
+        const cond4 = (descnivel.length > 30);
+
+        if(cond1 && cond2 && cond3 && cond4){
+            cond = true;
+        } else {
+            cond = false;
+        }
+        arrayValid.push(cond);
+    }
+
+    for(let i=0; i<arrayValid.length; i++){
+        if(arrayValid[i]){
+            continue;
+        } else {
+            valid = false;
+            alert(`Problema no preenchimento do nível ${i+1}`)
+            break;
+        }
+    }
+
+    if(valid){
+        //trocar para a tela de sucesso na criação do quizz
+        alert("pode proseguir");
+    } else {
+        alert("Por favor, verifique se as informações estão preenchidas corretamente");
+    }
+}
+
+
+quantniveis = 2;
+renderizarListaNiveis();
