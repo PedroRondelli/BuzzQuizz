@@ -202,7 +202,20 @@ body{
     align-items: center;
 }
 
+.inputs-lista-pergunta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 .item-lista-nivel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-lista-pergunta{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -226,6 +239,7 @@ body{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     margin-bottom: 22px;
 }
+
 .div-nivel img{
     height: 26px;
     width: 26px;
@@ -244,7 +258,29 @@ body{
     margin-top: 28px;
 }
 
+.div-pergunta{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 88vw;
+    max-width: 564px;
+    height: 74px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 22px;
+}
 
+.div-pergunta img{
+    height: 26px;
+    width: 26px;
+}
+
+.div-pergunta p{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+}
 
 /*AQUI TERMINA OS ESTILOS DA TELA 3*/
 
