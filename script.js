@@ -4,47 +4,11 @@ console.log("Estou aquui");
 let quantniveis;
 let quantperg;
 
-function rendenizarQuizzesPrincipal(resposta) {
-    let arrayDeObjetos = resposta.data
-    arrayDeObjetos.forEach(element => {
-        let stringId = JSON.stringify(element.id)
-        if (localStorage.getItem(stringId) !== null) {
-            let DivVazia = document.querySelector(".segundaDivPrimeiraTela")
-            let DivQuizzesProprios = document.querySelector(".terceiraDivPrimeiraTela")
-            DivVazia.classList.add("oculto")
-            DivQuizzesProprios.classList.remove("oculto")
-        } else {
-            let roloTodosOsQuizzes = document.querySelector(".roloTodosOsQuizzes")
-            let templateDivQuizz = `<div onclick="mudartela2(${element.id})" style="background-image:url(${element.image});" class="janelaQuizz"><h4>${element.title}</h4><div class="degrade"></div></div>`
-            roloTodosOsQuizzes.innerHTML = roloTodosOsQuizzes.innerHTML + templateDivQuizz
-        }
-    });
-}
-function Requisicaoprincipal() {
-    let promessaPrincipal = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes")
-    promessaPrincipal.then(rendenizarQuizzesPrincipal)
-    promessaPrincipal.catch(rendenizarQuizzesPrincipal)
-}
-function mudartela2(id) {
-    console.log(id)
-}
-function meusQuizzes(arrayMemoria) {
-    arrayMemoria.forEach(element => {
-        let roloSeusQuizzes = document.querySelector(".roloSeusQuizzes")
-        let templateDivQuizz = `<div onclick="mudartela2(${element.id})" style="background-image:url(${element.image});" class="janelaQuizz"><h4>${element.title}</h4><div class="degrade"></div></div>`
-        roloSeusQuizzes.innerHTML = roloSeusQuizzes.innerHTML + templateDivQuizz
-    })
-}
-Requisicaoprincipal()
-let memoria = localStorage.getItem("ids");
-meusQuizzes(memoria)
-
-
 console.log("Estou aquui");
 
 Requisicaoprincipal();
-
-// requisicaoQuizzes()
+let memoria = localStorage.getItem("ids");
+meusQuizzes(memoria);
 
 function rendenizarQuizzesPrincipal(resposta) {
 
@@ -80,25 +44,6 @@ function meusQuizzes(arrayMemoria) {
     })
 }
 
-// function rendenizaQuizzes(resposta) {
-//     console.log(resposta.data)
-//     resposta.data.forEach(element => {
-//         let templateDivQuizz = `<div onclick="mudartela2(${element.id});" class="visualizacaoQuizz"><div class="degrade"></div><img src="${element.image}"/><h2 class="tituloQuizzPedro">${element.title}</h2></div>`
-//         let listaDeQuizzes = document.querySelector(".listaDeQuizzes")
-//         listaDeQuizzes.innerHTML = listaDeQuizzes.innerHTML + templateDivQuizz
-//         // }
-//     });
-//     // let templateDivQuizz = `<div style=" background-image: url(${resposta.data[0].image});" class="visualizacaoQuizz"></div>`
-//     // let listaDeQuizzes = document.querySelector(".listaDeQuizzes")
-//     // listaDeQuizzes.innerHTML = listaDeQuizzes.innerHTML + templateDivQuizz
-// }
-
-// function requisicaoQuizzes() {
-//     let promessaTeste = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes")
-//     promessaTeste.then(rendenizaQuizzes)
-//     promessaTeste.catch(requisicaoQuizzes)
-// }
-
 function mudartela2(quizz) {
     console.log("Clicou")
 
@@ -116,15 +61,12 @@ function mudartela2(quizz) {
     promessaTeste.then(renderizaQuizz);
     promessaTeste.catch(mudartela2);
 
-    console.log(promessaTeste);
 }
 
 // randomiza as perguntas
 function comparador() {
     return Math.random() - 0.5;
 }
-
-// const respostasQuizz = [];
 
 // renderiza o quizz da tela 2 com perguntas embaralhadas
 function renderizaQuizz(resposta) {
@@ -140,56 +82,33 @@ function renderizaQuizz(resposta) {
     </div>
     `;
 
-    const respostasQuizz = [];
-
     let qtDePerguntas = quizzEscolhido.questions.length;
 
-    // armazena perguntas + respostas [SÓ ESTÁ ARMAZENANDO AS CORRETAS]
-    for (let i = 0; i < qtDePerguntas; i++) {
-        let perguntas = quizzEscolhido.questions[i];
-
-        console.log(perguntas);
-
-        for (let j = 0; j < i; j++) {
-            let respostaQuizz = perguntas.answers[j];
-
-            console.log(respostaQuizz);
-            console.log(respostasQuizz);
-            respostasQuizz.push(respostaQuizz);
-        }
-    }
-
-    // sorteia as perguntas+respostas
-    respostasQuizz.sort(comparador);
-
-    // renderiza as perguntas
     const listaDePerguntas = document.querySelector(".listaDePerguntas");
-    for (i = 0; i < respostasQuizz.length; i++) {
-        listaDePerguntas.innerHTML += `
-        <div class="perguntaQuizz">
-            <div class="titulopergunta-tela2">
-                <h1>${quizzEscolhido.questions[i].title}</h1>
-            </div>
-            <div class="respostas">
+    // armazena na variável perguntaHtml as perguntas + respostas 
+    for (let i = 0; i < qtDePerguntas; i++) {
+        let perguntaHtml = `<div class="perguntaQuizz">
+        <div class="titulopergunta-tela2">
+            <h1>${quizzEscolhido.questions[i].title}</h1>
+        </div>
+        <div class="respostas">
+`;
+        for (let j = 0; j < quizzEscolhido.questions[i].answers.length; j++) {
+            let perguntas = quizzEscolhido.questions[i];
+
+            perguntaHtml += `
                 <div class="resposta" onclick="selecionarResposta(this)">
-                    <img src="${respostasQuizz[i].image}" alt="">
-                    <p>${respostasQuizz[i].text}</p>
+                    <img src="${perguntas.answers[j].image}" alt="">
+                    <p>${perguntas.answers[j].text}</p>
                 </div>
-                <div class="resposta" onclick="selecionarResposta(this)">
-                    <img src="${respostasQuizz[i].image}" alt="">
-                    <p>${respostasQuizz[i].text}</p>
-                </div>
-                <div class="resposta" onclick="selecionarResposta(this)">
-                    <img src="${respostasQuizz[i].image}" alt="">
-                    <p>${respostasQuizz[i].text}</p>
-                </div>
-                <div class="resposta" onclick="selecionarResposta(this)">
-                    <img src="${respostasQuizz[i].image}" alt="">
-                    <p>${respostasQuizz[i].text}</p>
-                </div>
-            </div>
+        `;
+        }
+        perguntaHtml += `
+        </div>
         </div>
         `;
+
+        listaDePerguntas.innerHTML += perguntaHtml;
     }
 
     // botões do final da página
@@ -197,6 +116,8 @@ function renderizaQuizz(resposta) {
     <button class="reiniciarQuizz" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
     <div class="voltarHome" onclick="voltarHome()"><p>Voltar pra Home</p></div>
     `;
+
+
 }
 
 function selecionarResposta(click) {
@@ -214,6 +135,7 @@ function selecionarResposta(click) {
 function reiniciarQuizz() {
     window.location.reload(true);
 
+    mudartela2(idQuizzClicado);
     window.scrollTo(0, 0);
 }
 
@@ -223,48 +145,10 @@ function voltarHome() {
     let tela2 = document.querySelector(".tela2");
 
     tela1.classList.toggle("oculto");
-    console.log("hello");
-    // tela1.classList.add("escondido");
-    console.log("ola");
     tela2.classList.toggle("oculto");
-    console.log("hola");
-    // tela2.classList.add("container");
-
 
     window.scrollTo(0, 0);
 }
-
-// renderização de perguntas com duplo for {
-//     for (let i = 0; i < qtDePerguntas; i++) {
-//         for (let j = 0; j < quizzEscolhido.questions[i].answers.length / 2; j++) {
-//             listaDePerguntas.innerHTML += `
-//             <div class="perguntaQuizz">
-//                 <div class="titulopergunta-tela2">
-//                     <h1>${quizzEscolhido.questions[i].title}</h1>
-//                 </div>
-//                 <div class="respostas">
-//                     <div class="resposta">
-//                         <img src="${quizzEscolhido.questions[i].answers[j].image}" alt="">
-//                         <p>${quizzEscolhido.questions[i].answers[j].text}</p>
-//                     </div>
-//                     <div class="resposta">
-//                         <img src="${quizzEscolhido.questions[i].answers[j].image}" alt="">
-//                         <p>${quizzEscolhido.questions[i].answers[j].text}</p>
-//                     </div>
-//                     <div class="resposta">
-//                         <img src="${quizzEscolhido.questions[i].answers[j].image}" alt="">
-//                         <p>${quizzEscolhido.questions[i].answers[j].text}</p>
-//                     </div>
-//                     <div class="resposta">
-//                         <img src="${quizzEscolhido.questions[i].answers[j].image}" alt="">
-//                         <p>${quizzEscolhido.questions[i].answers[j].text}</p>
-//                     </div>
-//                 </div>
-//             </div>
-//              `;
-//         }
-//     }
-// }
 
 
 function verificarURL(texto) {
@@ -430,7 +314,6 @@ function ocultarInputsPergunta(pergunta) {
     avoPerg.querySelector(".div-pergunta").classList.toggle("oculto");
 }
 
-
 //funções para a tela 3.3 niveis
 
 function abrirTelaNiveis() {
@@ -524,6 +407,17 @@ function finalizarCriacaoNiveis() {
     } else {
         alert("Por favor, verifique se as informações estão preenchidas corretamente");
     }
+
+    mudarTelaSucesso(urlimagem, titulonivel);
+}
+
+function mudarTelaSucesso(img, titulo) {
+    let telaNiveis = document.querySelector(".telaniveis");
+    let telaSucesso = document.querySelector(".telasucesso");
+
+    telaNiveis.classList.toggle("oculto");
+    telaSucesso.classList.toggle("oculto");
+
 }
 
 
