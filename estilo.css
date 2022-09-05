@@ -80,9 +80,6 @@ body{
     
     
 }
-.escondidoPedro{
-    display: none;
-}
 .terceiraDivPrimeiraTela{
     width: 80vw;
     margin-top: 80px;
@@ -216,21 +213,29 @@ body{
 body{
     font-family: 'Roboto', sans-serif;
     background-color: #fafafa;
+    box-sizing: border-box;
 }
-.container{
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e5e5e5;
+}
+
+
+.container {
     /* background-color: blue; */
     margin-top: 64px;
     display: flex;
     flex-direction: column;
-    
 }
-.barrasuperior{
+
+.barrasuperior {
     background-color: #ec362d;
     width: 100vw;
     height: 64px;
     position: fixed;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     z-index: 5;
 
     display: flex;
@@ -243,14 +248,267 @@ body{
 
     box-shadow: 0px 0px 10px 0px #111111;
 }
+
+/* .quizzesUsuario {} */
 .oculto{
-    display: none !important;
+    display: none 
+}
+
+.quizzesUsuario{
+    /* background-color: chocolate; */
+    height: 181px;
+    border: 1px dashed #D5D5D5;
+    border-radius: 5px;
+    width: 80%;
+    margin: 80px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.caixaBotaoCriar {
+    /* background-color: burlywood; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.caixaBotaoCriar p {
+    color: #b9b9b9;
+    text-align: center;
+}
+
+.caixaBotaoCriar button {
+    border: 1px dashed #EC362D;
+    color: #EC362D;
+    background-color: transparent;
+    font-size: larger;
+    font-weight: 500;
+    border-radius: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.quizzesServidor {
+    /* background-color: darkmagenta; */
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.quizzesServidor h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    /* background-color: aquamarine; */
+    /* text-align: ; */
+
+}
+
+.listaDeQuizzes {
+    /* background-color: #EC362D; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* overflow-y: scroll; */
+}
+
+.visualizacaoQuizz {
+    width: 353px;
+    height: 181px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.visualizacaoQuizz img {
+    width: 353px;
+    height: 181px;
+    border-radius: 5px;
+    /* -webkit-mask-image: linear-gradient(to top, transparent 10%, black 100%); */
+
+}
+
+.tituloQuizzPedro {
+    background-color: transparent;
+    position: absolute;
+    bottom: 7px;
+    left: 18px;
+    z-index: 4;
+    width: 300px;
+    font-size: 19px;
+    font-weight: 400;
+    color: white;
+    overflow-wrap: break-word;
+}
+
+.degrade {
+    width: 353px;
+    height: 181px;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background: rgb(244, 242, 242);
+    background: linear-gradient(180deg, rgba(244, 242, 242, 0.2497373949579832) 0%, rgba(0, 0, 0, 0.9808298319327731) 90%);
 }
 
 
+/* INICIO DA TELA 2 */
+
+.imagemQuizz-tela2 {
+    width: 100vw;
+    height: 18vh;
+    min-height: 142px;
+    background-color: #000000;
+
+    position: relative;
+    z-index: 0;
+
+}
+
+.imagemQuizz-tela2>img {
+    width: 100vw;
+    height: 18vh;
+    min-height: 142px;
+    opacity: 0.6;
+    position: absolute;
+    z-index: 1;
+}
+
+.tituloQuizz-tela2 {
+    width: 100vw;
+    height: 18vh;
+    min-height: 142px;
+    color: #ffffff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    z-index: 2;
+}
+
+/* container das perguntas */
+.listaDePerguntas {
+    background-color: #e5e5e5;
+    width: 100%;
+    height: auto;
+    padding-bottom: 80px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* caixa de perguntas - alterar tamanho em px para mobile */
+.perguntaQuizz {
+    background-color: #ffffff;
+    width: 100vw;
+    max-width: 759px;
+    height: 676px;
+    max-height: 676px;
+    margin-top: 40px;
+
+    padding-top: 2%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+.titulopergunta-tela2 {
+    background-color: #A0438D;
+    width: 90%;
+    height: 20%;
+    margin-bottom: 2%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.respostas {
+    width: 90%;
+    height: 75%;
+    /* background-color: orange; */
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* align-items: flex-start; */
+}
+
+.resposta {
+    width: 45%;
+    height: 50%;
+    /* background-color: #EC362D; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.resposta>img {
+    width: 100%;
+    height: 75%;
+    /* background-color: yellow; */
+}
+
+.resposta>p {
+    width: 100%;
+    height: 20%;
+    /* background-color: green; */
+}
+
+.reiniciarQuizz {
+    width: 240px;
+    height: 50px;
+    margin-top: 50px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    border: none;
+
+    color: #fff5f4;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+
+}
+
+.voltarHome {
+    width: 240px;
+    height: 50px;
+    background-color: #e5e5e5;
+    border-radius: 15px;
+    border: none;
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.voltarHome>p {
+    color: #818181;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+/* FIM DA TELA 2 */
+
 /*AQUI INICIA OS ESTILOS DA TELA 3*/
 
-.titulo-tela3{
+.titulo-tela3 {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 20px;
@@ -261,13 +519,14 @@ body{
     margin-top: 71px;
     margin-bottom: 39px;
 }
-.perguntas-tela3{
+
+.perguntas-tela3 {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.caixaInput{
+.caixaInput {
     width: 88vw;
     max-width: 564px;
     height: 46px;
@@ -276,7 +535,7 @@ body{
     padding-left: 23px;
 }
 
-::placeholder{
+::placeholder {
     font-family: 'Roboto', sans-serif;
     font-style: italic;
     font-weight: 400;
@@ -284,15 +543,21 @@ body{
     line-height: 22px;
     color: #BABABA;
 }
+/* <<<<<<< HEAD
+
+.centralizar-botao {
+======= */
 .centralizar-botao{
     height: 80px;
+/* >>>>>>> 96ef022b9e8244881c4f26314a41add47fceccdb */
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 60px;
     margin-bottom: 60px;
 }
-.botao-tela3{
+
+.botao-tela3 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -308,13 +573,28 @@ body{
     border-style: none;
 }
 
+/* <<<<<<< HEAD
+======= */
 .inputs-lista-nivel{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.inputs-lista-pergunta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 .item-lista-nivel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-lista-pergunta{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -338,6 +618,7 @@ body{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     margin-bottom: 22px;
 }
+
 .div-nivel img{
     height: 26px;
     width: 26px;
@@ -356,17 +637,45 @@ body{
     margin-top: 28px;
 }
 
+.div-pergunta{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 88vw;
+    max-width: 564px;
+    height: 74px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 22px;
+}
+
+.div-pergunta img{
+    height: 26px;
+    width: 26px;
+}
+
+.div-pergunta p{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+}
 
 
 /*AQUI TERMINA OS ESTILOS DA TELA 3*/
 
-@media(max-width: 1100px){
-    .listaDeQuizzes{
+@media(max-width: 1100px) {
+    .listaDeQuizzes {
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
         /* justify-content: space-between; */
-        
+
+    }
+
+
+    .perguntaQuizz {
+        width: 100vw;
+        height: 52vh;
     }
 }
-
