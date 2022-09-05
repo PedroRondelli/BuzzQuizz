@@ -2,6 +2,41 @@
 let quantniveis;
 let quantperg;
 
+function rendenizarQuizzesPrincipal(resposta){
+    let arrayDeObjetos = resposta.data
+    arrayDeObjetos.forEach(element =>{
+        let stringId = JSON.stringify(element.id)
+        if(localStorage.getItem(stringId)!==null){
+           let DivVazia = document.querySelector(".segundaDivPrimeiraTela")
+           let DivQuizzesProprios=document.querySelector(".terceiraDivPrimeiraTela")
+           DivVazia.classList.add("escondidoPedro")
+           DivQuizzesProprios.classList.remove("escondidoPedro")
+        }else{
+            let roloTodosOsQuizzes = document.querySelector(".roloTodosOsQuizzes")
+            let templateDivQuizz = `<div onclick="mudartela2(${element.id})" style="background-image:url(${element.image});" class="janelaQuizz"><h4>${element.title}</h4><div class="degrade"></div></div>`
+            roloTodosOsQuizzes.innerHTML= roloTodosOsQuizzes.innerHTML + templateDivQuizz
+        }
+    });
+}
+function Requisicaoprincipal() {
+    let promessaPrincipal = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes")
+    promessaPrincipal.then(rendenizarQuizzesPrincipal)
+    promessaPrincipal.catch(rendenizarQuizzesPrincipal)
+}
+function mudartela2(id){
+    console.log(id)
+}
+function meusQuizzes(arrayMemoria){
+    arrayMemoria.forEach(element =>{
+        let roloSeusQuizzes = document.querySelector(".roloSeusQuizzes")
+        let templateDivQuizz = `<div onclick="mudartela2(${element.id})" style="background-image:url(${element.image});" class="janelaQuizz"><h4>${element.title}</h4><div class="degrade"></div></div>` 
+        roloSeusQuizzes.innerHTML = roloSeusQuizzes.innerHTML + templateDivQuizz
+    })
+}
+Requisicaoprincipal()
+let memoria = localStorage.getItem("ids")
+meusQuizzes(memoria)
+
 
 /* console.log("Estou aquui")
 requisicaoQuizzes()

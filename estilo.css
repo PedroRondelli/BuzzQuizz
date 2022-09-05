@@ -1,6 +1,219 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
 
 body{
+    font-family: 'Roboto', sans-serif; 
+}
+.containerPedro{
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.BarraSuperiorPedro{
+    background-color: #ec362d;
+    position:fixed;
+    top:0px;
+    left: 0px;
+    width:100vw;
+    height: 69px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+    
+}
+.BarraSuperiorPedro h1{
+    font-family: Roboto;
+    font-size: 37px;
+    font-weight: 700;
+    line-height: 43px;
+    letter-spacing: 0em;
+    color: white;
+    
+
+    
+}
+.segundaDivPrimeiraTela{
+    width: 80vw;
+    border: 1px dashed #D5D5D5;
+    border-radius: 5px;
+    height: 181px;
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.caixaCriarQuizz{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+
+}
+.caixaCriarQuizz h2{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23px;
+    text-align: center;
+    color:#B9B9B9;
+    ;
+
+}
+.caixaCriarQuizz button{
+    border: 1px dashed #ec362d ;
+    text-align: center;
+    cursor: pointer;
+    height: 40px;
+    width: 151px;
+    border-radius: 50px;
+    font-family: Roboto;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #ec362d;
+
+
+    
+    
+}
+.escondidoPedro{
+    display: none;
+}
+.terceiraDivPrimeiraTela{
+    width: 80vw;
+    margin-top: 80px;
+    
+}
+.seusQuizzes{
+    display: flex;
+    align-items: center;
+    margin-bottom: 13px;
+}
+.seusQuizzes h3{
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    margin-right: 15px;
+
+}
+.roloSeusQuizzes{
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    
+    
+}
+.corpo{
+    width: 80vw;
+    margin-top: 80px;
+    
+}
+.corpo h3{
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    margin-bottom: 13px;
+    
+    
+}
+.roloTodosOsQuizzes{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
+}
+.janelaQuizz{
+    height: 181px;
+    width: 340px;
+    border-radius: 5px;
+    
+    margin-right: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    background-size: 100% 100%;
+    
+    
+}
+.degrade{
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,0.8435749299719888) 29%, rgba(255,255,255,0.2665441176470589) 100%);
+    position: absolute;
+    height: 181px;
+    width: 340px;
+    border-radius: 5px;
+    z-index: 2;
+
+}
+.janelaQuizz h4{
+    position: absolute;
+    bottom: 17px;
+    left: 17px;
+    width: 300px;
+    overflow-wrap: break-word;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    color: white;
+    z-index: 3;
+    
+    
+}
+
+@media (max-width:1100px){
+    .BarraSuperiorPedro { 
+        height:60px;
+    }
+    .containerPedro{
+        margin-top: 60px;
+    }
+    .segundaDivPrimeiraTela{
+        width: 91vw;
+        margin-top: 20px;
+    }
+    .terceiraDivPrimeiraTela{
+        width: 91vw;
+        margin-top: 20px;
+    }
+    .seusQuizzes{
+        justify-content: space-between;
+    }
+    .seusQuizzes h3{
+        margin-right: 0px;
+    }
+    .corpo{
+        width: 91vw;
+        margin-top: 20px;
+    }
+    .janelaQuizz{
+        margin-right: 0px;
+    }
+    .roloSeusQuizzes{
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .roloTodosOsQuizzes{
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+}
+
+body{
     font-family: 'Roboto', sans-serif;
     background-color: #fafafa;
 }
