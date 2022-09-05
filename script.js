@@ -4,6 +4,41 @@ console.log("Estou aquui");
 let quantniveis;
 let quantperg;
 
+function rendenizarQuizzesPrincipal(resposta) {
+    let arrayDeObjetos = resposta.data
+    arrayDeObjetos.forEach(element => {
+        let stringId = JSON.stringify(element.id)
+        if (localStorage.getItem(stringId) !== null) {
+            let DivVazia = document.querySelector(".segundaDivPrimeiraTela")
+            let DivQuizzesProprios = document.querySelector(".terceiraDivPrimeiraTela")
+            DivVazia.classList.add("oculto")
+            DivQuizzesProprios.classList.remove("oculto")
+        } else {
+            let roloTodosOsQuizzes = document.querySelector(".roloTodosOsQuizzes")
+            let templateDivQuizz = `<div onclick="mudartela2(${element.id})" style="background-image:url(${element.image});" class="janelaQuizz"><h4>${element.title}</h4><div class="degrade"></div></div>`
+            roloTodosOsQuizzes.innerHTML = roloTodosOsQuizzes.innerHTML + templateDivQuizz
+        }
+    });
+}
+function Requisicaoprincipal() {
+    let promessaPrincipal = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes")
+    promessaPrincipal.then(rendenizarQuizzesPrincipal)
+    promessaPrincipal.catch(rendenizarQuizzesPrincipal)
+}
+function mudartela2(id) {
+    console.log(id)
+}
+function meusQuizzes(arrayMemoria) {
+    arrayMemoria.forEach(element => {
+        let roloSeusQuizzes = document.querySelector(".roloSeusQuizzes")
+        let templateDivQuizz = `<div onclick="mudartela2(${element.id})" style="background-image:url(${element.image});" class="janelaQuizz"><h4>${element.title}</h4><div class="degrade"></div></div>`
+        roloSeusQuizzes.innerHTML = roloSeusQuizzes.innerHTML + templateDivQuizz
+    })
+}
+Requisicaoprincipal()
+let memoria = localStorage.getItem("ids");
+meusQuizzes(memoria)
+
 
 console.log("Estou aquui");
 
@@ -15,9 +50,6 @@ function rendenizarQuizzesPrincipal(resposta) {
 
     let arrayDeObjetos = resposta.data;
 
-
-    console.log(arrayDeObjetos);
-
     arrayDeObjetos.forEach(element => {
         let stringId = JSON.stringify(element.id)
         if (localStorage.getItem(stringId) !== null) {
@@ -27,7 +59,6 @@ function rendenizarQuizzesPrincipal(resposta) {
             DivQuizzesProprios.classList.remove("oculto");
         } else {
             let roloTodosOsQuizzes = document.querySelector(".roloTodosOsQuizzes");
-            console.log(roloTodosOsQuizzes);
             let templateDivQuizz = `<div onclick="mudartela2(${element.id})" style="background-image:url(${element.image});" class="janelaQuizz"><h4>${element.title}</h4><div class="degrade"></div></div>`;
             roloTodosOsQuizzes.innerHTML = roloTodosOsQuizzes.innerHTML + templateDivQuizz;
         }
@@ -38,8 +69,6 @@ function Requisicaoprincipal() {
     let promessaPrincipal = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
     promessaPrincipal.then(rendenizarQuizzesPrincipal);
     promessaPrincipal.catch(rendenizarQuizzesPrincipal);
-
-    console.log("oi");
 }
 
 
@@ -50,8 +79,6 @@ function meusQuizzes(arrayMemoria) {
         roloSeusQuizzes.innerHTML = roloSeusQuizzes.innerHTML + templateDivQuizz;
     })
 }
-let memoria = localStorage.getItem("ids");
-// meusQuizzes(memoria);
 
 // function rendenizaQuizzes(resposta) {
 //     console.log(resposta.data)
@@ -97,7 +124,7 @@ function comparador() {
     return Math.random() - 0.5;
 }
 
-const respostasQuizz = [];
+// const respostasQuizz = [];
 
 // renderiza o quizz da tela 2 com perguntas embaralhadas
 function renderizaQuizz(resposta) {
@@ -113,6 +140,8 @@ function renderizaQuizz(resposta) {
     </div>
     `;
 
+    const respostasQuizz = [];
+
     let qtDePerguntas = quizzEscolhido.questions.length;
 
     // armazena perguntas + respostas [SÓ ESTÁ ARMAZENANDO AS CORRETAS]
@@ -125,7 +154,7 @@ function renderizaQuizz(resposta) {
             let respostaQuizz = perguntas.answers[j];
 
             console.log(respostaQuizz);
-
+            console.log(respostasQuizz);
             respostasQuizz.push(respostaQuizz);
         }
     }
