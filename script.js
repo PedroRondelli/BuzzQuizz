@@ -28,6 +28,12 @@ function Requisicaoprincipal() {
 function mudartela2(id) {
     console.log(id)
 }
+function mudartela3(){
+    let telapedro = document.querySelector(".tela1")
+    let telafernando = document.querySelector(".telainfobasica")
+    telapedro.classList.add("oculto")
+    telafernando.classList.remove("oculto")
+}
 function meusQuizzes(arrayMemoria) {
     arrayMemoria.forEach(element => {
         let roloSeusQuizzes = document.querySelector(".roloSeusQuizzes")
